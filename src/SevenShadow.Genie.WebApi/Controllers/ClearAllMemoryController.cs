@@ -6,15 +6,17 @@ using Newtonsoft.Json.Linq;
 namespace SevenShadow.Genie.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    public class PingController : BaseController
+    public class ClearAllMemoryController : BaseController
     {
-        public PingController(IOptions<AppSettings> appSettings) : base(appSettings) { }
 
+        public ClearAllMemoryController(IOptions<AppSettings> appSettings) : base(appSettings) {}
+        
         [HttpGet]
         public async Task<JObject> Get()
         {
             GenieHelper helper = new GenieHelper(_settings.GenieBottleUrl);
-            return await helper.Ping();
+            return await helper.ClearAllMemory();
         }
+
     }
 }
